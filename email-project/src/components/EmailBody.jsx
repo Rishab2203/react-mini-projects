@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { timeStampToDateAndTime } from "../utils/utils";
 
-const EmailBody = ({ email }) => {
+const EmailBody = ({ email, handleFavouriteClick }) => {
   const [loading, setLoading] = useState(false);
   const [emailBody, setEmailBody] = useState("");
   useEffect(() => {
@@ -35,7 +35,10 @@ const EmailBody = ({ email }) => {
               {timeStampToDateAndTime(email["date"])}
             </span>
           </div>
-          <button className="bg-[#E54065] rounded-xl text-white h-fit px-2 py-1 cursor-pointer">
+          <button
+            onClick={handleFavouriteClick}
+            className="bg-[#E54065] rounded-xl text-white h-fit px-2 py-1 cursor-pointer active:translate-y-1"
+          >
             Mark as favourite
           </button>
         </div>
