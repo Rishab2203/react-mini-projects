@@ -4,7 +4,14 @@ import Email from "./Email";
 
 import EmailBody from "./EmailBody";
 
-const Emails = ({ data, setRead, setShowEmail, showMail, setFavourite }) => {
+const Emails = ({
+  data,
+  setRead,
+  setShowEmail,
+  showMail,
+  setFavourite,
+  favourite,
+}) => {
   const [email, setEmail] = useState({});
 
   const handleEmailClick = (mail) => {
@@ -28,13 +35,14 @@ const Emails = ({ data, setRead, setShowEmail, showMail, setFavourite }) => {
   };
 
   return (
-    <main className="flex items-center gap-11 ">
+    <main className="flex items-center gap-8 mt-1">
       <div className=" w-full overflow-auto  h-[90vh] min-w-[35vw]">
         {data.map((mail, index) => (
           <Email
             mail={mail}
             handelClick={() => handleEmailClick(mail)}
             email={email}
+            favourite={favourite}
           />
         ))}
       </div>

@@ -1,11 +1,11 @@
 import React from "react";
 import { timeStampToDateAndTime } from "../utils/utils";
 
-const Email = ({ mail, handelClick, email }) => {
+const Email = ({ mail, handelClick, email, favourite }) => {
   return (
     <div
       onClick={handelClick}
-      className={`flex gap-5 border-2 border-[#CFD2DC] my-3 p-3 px-6 rounded-lg cursor-pointer bg-white ${
+      className={`flex gap-5 border-2 border-[#CFD2DC] mb-4 p-3 px-6 rounded-lg cursor-pointer bg-white ${
         email.id === mail.id ? "border-[#E54065]" : ""
       }`}
       key={`email-${mail.id}`}
@@ -28,9 +28,14 @@ const Email = ({ mail, handelClick, email }) => {
         <span className="text-[#7e7983] text-overflow-ellipsis ">
           {mail["short_description"]}
         </span>
-        <span className="text-[#7e7983]">
-          {timeStampToDateAndTime(mail["date"])}
-        </span>
+        <div className="flex gap-6">
+          <span className="text-[#7e7983]">
+            {timeStampToDateAndTime(mail["date"])}
+          </span>
+          {favourite.includes(mail) && (
+            <span className=" text-[#E54065]">Favourite</span>
+          )}
+        </div>
       </div>
     </div>
   );

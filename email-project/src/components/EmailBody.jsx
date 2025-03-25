@@ -23,7 +23,7 @@ const EmailBody = ({ email, handleFavouriteClick }) => {
     fetchEmailBody();
   }, [email]);
   return (
-    <div className="bg-white  p-6 px-12 h-[90vh] min-w-[60vw]  flex gap-8  border-2 border-[#CFD2DC]  rounded-md overflow-y-auto ">
+    <div className="bg-white  p-6 px-12 h-[90vh] min-w-[60vw]  flex gap-8  border-2 border-[#CFD2DC]  rounded-md overflow-y-auto mr-2 ">
       <span className=" flex justify-center items-center   h-[50px] rounded-[50%] bg-[#E54065]  text-white text-2xl p-2 ">
         {email["from"]["name"].slice(0, 1).toUpperCase()}
       </span>

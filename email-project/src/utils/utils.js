@@ -5,7 +5,6 @@ export function timeStampToDateAndTime(timeStamp) {
   const day = date.getDate();
   const hours = date.getHours();
   const minutes = date.getMinutes();
-  const seconds = date.getSeconds();
 
-  return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+  return `${day}/${month}/${year}   ${hours}:${minutes}`;
 }
