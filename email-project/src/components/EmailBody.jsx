@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { timeStampToDateAndTime } from "../utils/utils";
+import Loader from "./Loader";
 
 const EmailBody = ({ email, handleFavouriteClick }) => {
   const [loading, setLoading] = useState(false);
@@ -24,7 +25,7 @@ const EmailBody = ({ email, handleFavouriteClick }) => {
   }, [email]);
   return (
     <div className="bg-white  p-6 px-12 h-[90vh] min-w-[60vw]  flex gap-8  border-2 border-[#CFD2DC]  rounded-md overflow-y-auto mr-2 ">
-      <span className=" flex justify-center items-center   h-[50px] rounded-[50%] bg-[#E54065]  text-white text-2xl p-2 ">
+      <span className=" flex justify-center items-center min-w-[50px]  h-[50px] rounded-[50%] bg-[#E54065]  text-white text-2xl p-2 ">
         {email["from"]["name"].slice(0, 1).toUpperCase()}
       </span>
       <div>
@@ -43,7 +44,9 @@ const EmailBody = ({ email, handleFavouriteClick }) => {
           </button>
         </div>
         {loading ? (
-          <div className="">Loading....</div>
+          <div className="flex items-center justify-between  translate-x-[100%] translate-y-[100%] ">
+            <Loader />
+          </div>
         ) : (
           <p
             className="mt-6 text-[#7e7983] whitespace-normal leading-relaxed  "

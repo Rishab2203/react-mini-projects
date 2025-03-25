@@ -1,11 +1,8 @@
 import React from "react";
 
-const Button = ({ buttonName, handleClick }) => {
+const Button = ({ buttonName, handleClick, styles }) => {
   return (
-    <button
-      className="cursor-pointer active:bg-blue-700 "
-      onClick={handleClick}
-    >
+    <button className={`cursor-pointer ${styles}`} onClick={handleClick}>
       {buttonName}
     </button>
   );

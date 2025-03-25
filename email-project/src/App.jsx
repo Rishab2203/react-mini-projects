@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import FilterBar from "./components/FilterBar";
 import Emails from "./components/Emails";
+import Loader from "./components/Loader";
 
 function App() {
   const [fetchedData, setFetchedData] = useState([]);
@@ -12,20 +13,6 @@ function App() {
 
   const [showMail, setShowEmail] = useState(false);
 
-  const handleReadClick = () => {
-    setData(read);
-    setShowEmail(false);
-  };
-
-  const handleUnreadClick = () => {
-    const unread = fetchedData.filter((mail) => !read.includes(mail));
-    setData(unread);
-    setShowEmail(false);
-  };
-  const handleFavouriteClick = () => {
-    setData(favourite);
-    setShowEmail(false);
-  };
   useEffect(() => {
     async function fetchData() {
       try {
@@ -47,21 +34,29 @@ function App() {
 
   return (
     <>
-      <div className=" p-7  ">
-        <FilterBar
-          handleReadClick={handleReadClick}
-          handleUnreadClick={handleUnreadClick}
-          handleFavouriteClick={handleFavouriteClick}
-        />
-        <Emails
-          data={data}
-          setRead={setRead}
-          setShowEmail={setShowEmail}
-          showMail={showMail}
-          favourite={favourite}
-          setFavourite={setFavourite}
-        />
-      </div>
+      {loading ? (
+        <div className="flex items-center justify-center min-h-screen">
+          <Loader />
+        </div>
+      ) : (
+        <div className=" p-7  ">
+          <FilterBar
+            read={read}
+            setData={setData}
+            setShowEmail={setShowEmail}
+            favourite={favourite}
+            fetchedData={fetchedData}
+          />
+          <Emails
+            data={data}
+            setRead={setRead}
+            setShowEmail={setShowEmail}
+            showMail={showMail}
+            favourite={favourite}
+            setFavourite={setFavourite}
+          />
+        </div>
+      )}
     </>
   );
 }
