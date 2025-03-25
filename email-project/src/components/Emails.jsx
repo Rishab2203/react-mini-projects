@@ -58,7 +58,7 @@ const Emails = ({ data }) => {
               <div className="">Loading....</div>
             ) : (
               <p
-                className="mt-6 text-[#7e7983] whitespace-normal leading-relaxed "
+                className="mt-6 text-[#7e7983] whitespace-normal leading-relaxed overflow auto "
                 dangerouslySetInnerHTML={{ __html: emailBody }}
               ></p>
             )}
