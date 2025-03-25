@@ -27,7 +27,7 @@ function App() {
 
   return (
     <>
-      <div className="p-5">
+      <div className=" p-7">
         <FilterBar />
         <Emails data={data} />
       </div>
