@@ -1,13 +1,13 @@
 import React from "react";
 import { timeStampToDateAndTime } from "../utils/utils";
 
-const Email = ({ mail, handelClick, email, favourite }) => {
+const Email = ({ mail, handelClick, email, favourite, read }) => {
   return (
     <div
       onClick={handelClick}
-      className={`flex gap-5 border-2 border-[#CFD2DC] mb-4 p-3 px-6 rounded-lg cursor-pointer bg-white ${
+      className={`flex gap-5 border-2 border-[#CFD2DC] mb-4 p-3 px-6 rounded-lg cursor-pointer bg-[#CFD2DC] ${
         email?.id === mail.id ? "border-[#E54065]" : ""
-      }`}
+      } ${read.includes(mail) ? "bg-white" : ""}`}
       key={`email-${mail.id}`}
       id={mail.id}
     >

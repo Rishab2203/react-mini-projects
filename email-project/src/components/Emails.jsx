@@ -8,6 +8,7 @@ const Emails = ({
   data,
   setRead,
   setFavourite,
+  read,
   email,
   setEmail,
   favourite,
@@ -41,6 +42,7 @@ const Emails = ({
             handelClick={() => handleEmailClick(mail)}
             email={email}
             favourite={favourite}
+            read={read}
           />
         ))}
       </div>

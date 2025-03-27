@@ -12,8 +12,6 @@ function App() {
   const [favourite, setFavourite] = useState([]);
   const [email, setEmail] = useState(null);
 
-  const [showMail, setShowEmail] = useState(false);
-
   useEffect(() => {
     async function fetchData() {
       try {
@@ -30,7 +28,7 @@ function App() {
         setLoading(false);
       }
     }
-    fetchData().then((data) => console.log(data));
+    fetchData();
   }, []);
 
   return (
@@ -52,6 +50,7 @@ function App() {
             data={data}
             setRead={setRead}
             email={email}
+            read={read}
             setEmail={setEmail}
             favourite={favourite}
             setFavourite={setFavourite}
