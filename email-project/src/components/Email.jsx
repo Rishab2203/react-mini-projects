@@ -6,7 +6,7 @@ const Email = ({ mail, handelClick, email, favourite }) => {
     <div
       onClick={handelClick}
       className={`flex gap-5 border-2 border-[#CFD2DC] mb-4 p-3 px-6 rounded-lg cursor-pointer bg-white ${
-        email.id === mail.id ? "border-[#E54065]" : ""
+        email?.id === mail.id ? "border-[#E54065]" : ""
       }`}
       key={`email-${mail.id}`}
       id={mail.id}

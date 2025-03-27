@@ -7,16 +7,14 @@ import EmailBody from "./EmailBody";
 const Emails = ({
   data,
   setRead,
-  setShowEmail,
-  showMail,
   setFavourite,
+  email,
+  setEmail,
   favourite,
 }) => {
-  const [email, setEmail] = useState({});
-
   const handleEmailClick = (mail) => {
     setEmail(mail);
-    setShowEmail(true);
+
     setRead((prev) => {
       if (!prev.includes(mail)) {
         return [...prev, mail];
@@ -46,7 +44,7 @@ const Emails = ({
           />
         ))}
       </div>
-      {showMail && (
+      {email && (
         <EmailBody email={email} handleFavouriteClick={handleFavouriteClick} />
       )}
     </main>

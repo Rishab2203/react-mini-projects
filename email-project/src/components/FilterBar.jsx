@@ -1,28 +1,28 @@
 import React, { useState } from "react";
 import Button from "./Button";
 
-const FilterBar = ({ read, setData, setShowEmail, favourite, fetchedData }) => {
+const FilterBar = ({ read, setData, setEmail, favourite, fetchedData }) => {
   const [activeBtn, setActiveBtn] = useState(1);
   const handleReadClick = () => {
     setData(read);
-    setShowEmail(false);
+    setEmail(null);
     setActiveBtn(3);
   };
 
   const handleUnreadClick = () => {
     const unread = fetchedData.filter((mail) => !read.includes(mail));
     setData(unread);
-    setShowEmail(false);
+    setEmail(null);
     setActiveBtn(2);
   };
   const handleFavouriteClick = () => {
     setData(favourite);
-    setShowEmail(false);
+    setEmail(null);
     setActiveBtn(4);
   };
   const handleAllClick = () => {
     setData(fetchedData);
-    setShowEmail(false);
+    setEmail(null);
     setActiveBtn(1);
   };
   return (

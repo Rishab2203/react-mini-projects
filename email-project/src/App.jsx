@@ -10,6 +10,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [read, setRead] = useState([]);
   const [favourite, setFavourite] = useState([]);
+  const [email, setEmail] = useState(null);
 
   const [showMail, setShowEmail] = useState(false);
 
@@ -43,15 +44,15 @@ function App() {
           <FilterBar
             read={read}
             setData={setData}
-            setShowEmail={setShowEmail}
+            setEmail={setEmail}
             favourite={favourite}
             fetchedData={fetchedData}
           />
           <Emails
             data={data}
             setRead={setRead}
-            setShowEmail={setShowEmail}
-            showMail={showMail}
+            email={email}
+            setEmail={setEmail}
             favourite={favourite}
             setFavourite={setFavourite}
           />

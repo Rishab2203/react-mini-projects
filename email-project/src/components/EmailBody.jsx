@@ -11,7 +11,7 @@ const EmailBody = ({ email, handleFavouriteClick }) => {
       try {
         setLoading(true);
         const response = await fetch(
-          `https://flipkart-email-mock.vercel.app/?id=${email.id}`
+          `https://flipkart-email-mock.vercel.app/?id=${email?.id}`
         );
         const result = await response.json();
         setEmailBody(result.body);
