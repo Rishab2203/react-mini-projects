@@ -6,21 +6,23 @@ import EmailBody from "./EmailBody";
 
 const Emails = ({
   data,
-  setRead,
   setFavourite,
-  read,
   email,
   setEmail,
   favourite,
+  setData,
 }) => {
   const handleEmailClick = (mail) => {
     setEmail(mail);
 
-    setRead((prev) => {
-      if (!prev.includes(mail)) {
-        return [...prev, mail];
-      }
-      return prev;
+    setData((prev) => {
+      const updated = prev.map((ele) => {
+        if (ele.id === mail.id) {
+          ele.read = true;
+        }
+        return ele;
+      });
+      return updated;
     });
   };
 
@@ -36,13 +38,12 @@ const Emails = ({
   return (
     <main className="flex items-center gap-8 mt-1">
       <div className=" w-full overflow-auto  h-[90vh] min-w-[35vw]">
-        {data.map((mail, index) => (
+        {data.map((mail) => (
           <Email
             mail={mail}
             handelClick={() => handleEmailClick(mail)}
             email={email}
             favourite={favourite}
-            read={read}
           />
         ))}
       </div>

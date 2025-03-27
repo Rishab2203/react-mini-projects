@@ -8,7 +8,6 @@ function App() {
   const [fetchedData, setFetchedData] = useState([]);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [read, setRead] = useState([]);
   const [favourite, setFavourite] = useState([]);
   const [email, setEmail] = useState(null);
 
@@ -40,7 +39,7 @@ function App() {
       ) : (
         <div className=" p-7  ">
           <FilterBar
-            read={read}
+            data={data}
             setData={setData}
             setEmail={setEmail}
             favourite={favourite}
@@ -48,9 +47,8 @@ function App() {
           />
           <Emails
             data={data}
-            setRead={setRead}
+            setData={setData}
             email={email}
-            read={read}
             setEmail={setEmail}
             favourite={favourite}
             setFavourite={setFavourite}
