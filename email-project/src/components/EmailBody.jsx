@@ -10,7 +10,7 @@ const EmailBody = ({ email, handleFavouriteClick }) => {
   useEffect(() => {
     async function fetchEmailBody() {
       try {
-        setLoading(true);
+        // setLoading(true);
         const response = await fetch(
           `https://flipkart-email-mock.vercel.app/?id=${email?.id}`
         );
@@ -40,9 +40,9 @@ const EmailBody = ({ email, handleFavouriteClick }) => {
           </div>
           <button
             onClick={handleFavouriteClick}
-            className="bg-[#E54065] rounded-xl text-white h-fit px-2 py-1 cursor-pointer active:translate-y-1"
+            className="bg-[#E54065] text-white rounded-xl  h-fit px-2 py-1 cursor-pointer active:translate-y-1"
           >
-            Mark as favourite
+            {!email.isFavourite ? " Mark as favourite" : "Unmark as favourite"}
           </button>
         </div>
         {loading ? (

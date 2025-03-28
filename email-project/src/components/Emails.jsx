@@ -20,15 +20,21 @@ const Emails = ({ fetchedData, filter, email, setEmail, setFetchedData }) => {
   };
 
   const handleFavouriteClick = () => {
+    setEmail((prev) => {
+      return { ...prev, isFavourite: !prev.isFavourite };
+    });
     setFetchedData((prev) => {
       const updated = prev.map((ele) => {
         if (ele.id === email.id) {
-          ele.isFavourite = true;
+          return { ...ele, isFavourite: !ele.isFavourite };
         }
         return ele;
       });
       return updated;
     });
+    if (filter === "favourites") {
+      setEmail(null);
+    }
   };
 
   let filteredEmails = fetchedData.filter((ele) => {
@@ -56,7 +62,11 @@ const Emails = ({ fetchedData, filter, email, setEmail, setFetchedData }) => {
         ))}
       </div>
       {email && (
-        <EmailBody email={email} handleFavouriteClick={handleFavouriteClick} />
+        <EmailBody
+          key={email.id}
+          email={email}
+          handleFavouriteClick={handleFavouriteClick}
+        />
       )}
     </main>
   );
