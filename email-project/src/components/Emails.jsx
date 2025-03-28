@@ -4,18 +4,11 @@ import Email from "./Email";
 
 import EmailBody from "./EmailBody";
 
-const Emails = ({
-  data,
-  setFavourite,
-  email,
-  setEmail,
-  favourite,
-  setData,
-}) => {
+const Emails = ({ fetchedData, filter, email, setEmail, setFetchedData }) => {
   const handleEmailClick = (mail) => {
     setEmail(mail);
 
-    setData((prev) => {
+    setFetchedData((prev) => {
       const updated = prev.map((ele) => {
         if (ele.id === mail.id) {
           ele.read = true;
@@ -27,23 +20,38 @@ const Emails = ({
   };
 
   const handleFavouriteClick = () => {
-    setFavourite((prev) => {
-      if (!prev.includes(email)) {
-        return [...prev, email];
-      }
-      return prev;
+    setFetchedData((prev) => {
+      const updated = prev.map((ele) => {
+        if (ele.id === email.id) {
+          ele.isFavourite = true;
+        }
+        return ele;
+      });
+      return updated;
     });
   };
+
+  let filteredEmails = fetchedData.filter((ele) => {
+    if (filter === "read") {
+      return ele.read;
+    } else if (filter === "unread") {
+      return !ele.read || ele?.id === email?.id;
+    } else if (filter === "favourites") {
+      return ele.isFavourite;
+    } else if (filter === "all") {
+      return true;
+    }
+  });
 
   return (
     <main className="flex items-center gap-8 mt-1">
       <div className=" w-full overflow-auto  h-[90vh] min-w-[35vw]">
-        {data.map((mail) => (
+        {filteredEmails.map((mail) => (
           <Email
             mail={mail}
             handelClick={() => handleEmailClick(mail)}
             email={email}
-            favourite={favourite}
+            key={`email-${mail.id}`}
           />
         ))}
       </div>

@@ -1,37 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "./Button";
 
-const FilterBar = ({ data, setData, setEmail, favourite, fetchedData }) => {
-  const [activeBtn, setActiveBtn] = useState(1);
+const FilterBar = ({ filter, setEmail, setFilter }) => {
   const handleReadClick = () => {
-    setData((prev) => prev.filter((ele) => ele.read));
-
+    setFilter("read");
     setEmail(null);
-    setActiveBtn(3);
   };
 
   const handleUnreadClick = () => {
-    const unread = fetchedData.filter((mail) => !data.includes(mail));
-    setData(unread);
+    setFilter("unread");
     setEmail(null);
-    setActiveBtn(2);
   };
   const handleFavouriteClick = () => {
-    setData(favourite);
+    setFilter("favourites");
     setEmail(null);
-    setActiveBtn(4);
   };
   const handleAllClick = () => {
-    setData(fetchedData);
+    setFilter("all");
     setEmail(null);
-    setActiveBtn(1);
   };
   return (
     <div className="flex gap-6">
       <span>Filter By: </span>
       <Button
         styles={
-          activeBtn === 1 &&
+          filter === "all" &&
           " px-1  rounded-md transition delay-150 bg-[#E1E4EA] "
         }
         buttonName={"All"}
@@ -39,7 +32,7 @@ const FilterBar = ({ data, setData, setEmail, favourite, fetchedData }) => {
       />
       <Button
         styles={
-          activeBtn === 2 &&
+          filter === "unread" &&
           "px-1  rounded-md transition delay-150 bg-[#E1E4EA] "
         }
         buttonName={"Unread"}
@@ -47,7 +40,7 @@ const FilterBar = ({ data, setData, setEmail, favourite, fetchedData }) => {
       />
       <Button
         styles={
-          activeBtn === 3 &&
+          filter === "read" &&
           "px-1  rounded-md transition delay-150 bg-[#E1E4EA] "
         }
         buttonName={"Read"}
@@ -55,7 +48,7 @@ const FilterBar = ({ data, setData, setEmail, favourite, fetchedData }) => {
       />
       <Button
         styles={
-          activeBtn === 4 &&
+          filter === "favourites" &&
           "px-1  rounded-md transition delay-150 bg-[#E1E4EA] "
         }
         buttonName={"Favourites"}

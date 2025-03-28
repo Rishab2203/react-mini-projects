@@ -5,6 +5,7 @@ import Loader from "./Loader";
 
 const EmailBody = ({ email, handleFavouriteClick }) => {
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [emailBody, setEmailBody] = useState("");
   useEffect(() => {
     async function fetchEmailBody() {
@@ -17,6 +18,7 @@ const EmailBody = ({ email, handleFavouriteClick }) => {
         setEmailBody(result.body);
       } catch (err) {
         console.log(err.message);
+        setError(err.message);
       } finally {
         setLoading(false);
       }

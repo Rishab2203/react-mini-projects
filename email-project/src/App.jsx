@@ -6,9 +6,9 @@ import Loader from "./components/Loader";
 
 function App() {
   const [fetchedData, setFetchedData] = useState([]);
-  const [data, setData] = useState([]);
+  const [filter, setFilter] = useState("all");
   const [loading, setLoading] = useState(false);
-  const [favourite, setFavourite] = useState([]);
+  const [error, setError] = useState(null);
   const [email, setEmail] = useState(null);
 
   useEffect(() => {
@@ -19,9 +19,10 @@ function App() {
         const result = await response.json();
 
         setFetchedData(result.list);
-        setData(result.list);
+
         return result.list;
       } catch (err) {
+        setError(err.message);
         console.log(err.message);
       } finally {
         setLoading(false);
@@ -39,20 +40,19 @@ function App() {
       ) : (
         <div className=" p-7  ">
           <FilterBar
-            data={data}
-            setData={setData}
+            filter={filter}
+            setFilter={setFilter}
             setEmail={setEmail}
-            favourite={favourite}
-            fetchedData={fetchedData}
           />
-          <Emails
-            data={data}
-            setData={setData}
-            email={email}
-            setEmail={setEmail}
-            favourite={favourite}
-            setFavourite={setFavourite}
-          />
+          {
+            <Emails
+              filter={filter}
+              fetchedData={fetchedData}
+              setFetchedData={setFetchedData}
+              email={email}
+              setEmail={setEmail}
+            />
+          }
         </div>
       )}
     </>
