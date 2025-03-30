@@ -8,8 +8,8 @@ const Navbar = () => {
           <svg
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"
-            width="100px"
-            height="29px"
+            width="105px"
+            height="32px"
             viewBox="0 0 111 29"
             version="1.1"
           >
@@ -83,10 +83,10 @@ const Navbar = () => {
               </g>
             </g>
           </svg>
-          <span className="text-[12px]  border-b border-black  py-4 font-light h-full ">
+          <span className="text-[15px]  border-b border-black  py-4 font-light h-full ">
             Discover
           </span>
-          <span className="text-[12px] text-gray-400">Create</span>
+          <span className="text-[15px] text-gray-400">Create</span>
         </div>
         <div className="flex items-center gap-3">
           <span className="text-[13px] text-gray-400">Watchlist</span>

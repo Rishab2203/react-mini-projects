@@ -32,7 +32,6 @@ const CustomSelect = ({ selected, setSelected }) => {
     });
   };
 
-  // Close dropdown if clicking outside
   useEffect(() => {
     function handleClickOutside(event) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -45,9 +44,8 @@ const CustomSelect = ({ selected, setSelected }) => {
 
   return (
     <div className="relative inline-block text-left" ref={dropdownRef}>
-      {/* Button */}
       <button
-        className="flex items-center px-1 py-2  text-sm border-b border-gray-400  text-gray-700 bg-white "
+        className="flex items-center px-1 py-3  text-sm border-b-2 border-gray-400  text-gray-700 bg-white "
         onClick={toggleDropdown}
       >
         Sort by{" "}

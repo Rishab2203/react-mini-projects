@@ -5,6 +5,7 @@ import SidebarFilters from "./components/SidebarFilters";
 
 import "./App.css";
 import Card from "./components/Card";
+import { RiH1 } from "react-icons/ri";
 
 function App() {
   const [data, setData] = useState([]);
@@ -114,18 +115,22 @@ function App() {
   return (
     <>
       <Navbar />
-      <div className="flex flex-col w-[60vw] m-auto p-1 justify-between mt-4">
+      <div className="flex flex-col w-[60vw] m-auto p-1 justify-between mt-7">
         <Sectionbar selected={selected} setSelected={setSelected} />
-        <main className="flex mt-5 justify-between">
+        <main className="flex mt-5  justify-between px-1.5">
           <SidebarFilters
             filters={filters}
             setFilters={setFilters}
             filterCount={filterCount}
           />
           <section className="flex flex-col ">
-            {sortedData.map((item) => (
-              <Card key={item._id} item={item} />
-            ))}
+            {sortedData.length ? (
+              sortedData.map((item) => <Card key={item._id} item={item} />)
+            ) : (
+              <h1 className="font-extrabold  text-gray-600 text-3xl w-[30vw] mt-4 ">
+                &#128532; Sorry! No results
+              </h1>
+            )}
           </section>
         </main>
       </div>
