@@ -5,7 +5,7 @@ import { LuCircleArrowOutDownRight } from "react-icons/lu";
 
 const Card = ({ item }) => {
   return (
-    <div className="flex py-8 px-9 items-center gap-4 border-b border-gray-400 min-w-fit cursor-pointer hover:border hover:border-gray-400 hover:rounded-md ">
+    <div className="flex py-8 px-9 items-center gap-4 border-b border-gray-400 min-w-fit cursor-pointer hover:border hover:border-gray-400 hover:rounded-md   ">
       <img
         src={`https://assets.smallcase.com/images/smallcases/200/${item.scid}.png`}
         width="70px"

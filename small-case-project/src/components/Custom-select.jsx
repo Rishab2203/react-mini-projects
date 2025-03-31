@@ -27,7 +27,7 @@ const CustomSelect = ({ selected, setSelected }) => {
   const handleOrderClick = (order) => {
     setSelected((prev) => {
       let update = { ...prev, order: order };
-      console.log(update);
+
       return update;
     });
   };
@@ -57,7 +57,6 @@ const CustomSelect = ({ selected, setSelected }) => {
         <span className="w-4 h-4 ml-2 text-gray-500">&#x2191;</span>
       </button>
 
-      {/* Dropdown */}
       {isOpen && (
         <div className="absolute left-0 mt-2 w-64 bg-white shadow-md rounded-lg p-4 z-10">
           <div className="space-y-2">

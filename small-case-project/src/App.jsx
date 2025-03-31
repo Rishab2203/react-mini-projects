@@ -2,10 +2,8 @@ import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import Sectionbar from "./components/Sectionbar";
 import SidebarFilters from "./components/SidebarFilters";
-
 import "./App.css";
 import Card from "./components/Card";
-import { RiH1 } from "react-icons/ri";
 
 function App() {
   const [data, setData] = useState([]);
@@ -95,24 +93,18 @@ function App() {
         a["brokerMeta"]["flags"]["popular"]["rank"] -
         b["brokerMeta"]["flags"]["popular"]["rank"]
       );
-    }
-    if (selected === "Minimum Amount") {
+    } else if (selected === "Minimum Amount") {
       return a["stats"]["minInvestAmount"] - b["stats"]["minInvestAmount"];
-    }
-    if (selected === "Recently Rebalanced") {
+    } else if (selected === "Recently Rebalanced") {
       return a["stats"]["minInvestAmount"] - b["stats"]["minInvestAmount"];
-    }
-    if (selected.tenure) {
+    } else if (selected.tenure) {
       const timeDuration = selected.tenure.value;
-      console.log(
-        a["stats"]["returns"][timeDuration] -
-          b["stats"]["returns"][timeDuration]
-      );
-      return selected.tenure.order !== "High-Low"
-        ? a["stats"]["returns"][timeDuration] -
-            b["stats"]["returns"][timeDuration]
-        : b["stats"]["returns"][timeDuration] -
-            a["stats"]["returns"][timeDuration];
+
+      return selected.order === "High-Low"
+        ? b["stats"]["returns"][timeDuration] -
+            a["stats"]["returns"][timeDuration]
+        : a["stats"]["returns"][timeDuration] -
+            b["stats"]["returns"][timeDuration];
     }
     return 0;
   });
