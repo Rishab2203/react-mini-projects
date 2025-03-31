@@ -114,17 +114,17 @@ function App() {
       <Navbar />
       <div className="flex flex-col  max-w-[75vw] m-auto p-1 justify-between mt-7">
         <Sectionbar selected={selected} setSelected={setSelected} />
-        <main className="flex mt-5 justify-between  gap-1.5 px-1.5">
+        <main className="flex mt-5 justify-between   px-1.5">
           <SidebarFilters
             filters={filters}
             setFilters={setFilters}
             filterCount={filterCount}
           />
-          <section className="flex flex-col ">
+          <section className="flex flex-col  px-1 ">
             {sortedData.length ? (
               sortedData.map((item) => <Card key={item._id} item={item} />)
             ) : (
-              <h1 className="font-extrabold  text-gray-600 text-3xl w-[30vw] mt-4 ">
+              <h1 className="font-extrabold  text-gray-600 text-3xl w-[55vw] text-center mt-4 ">
                 &#128532; Sorry! No results
               </h1>
             )}

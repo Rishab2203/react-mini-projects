@@ -31,7 +31,7 @@ const SidebarFilters = ({ filters, setFilters, filterCount }) => {
   };
   return (
     <>
-      <section className="w-[13vw] flex flex-col gap-4">
+      <section className="w-[15vw] flex flex-col gap-4">
         <div className="flex justify-between border-b pb-3 border-gray-200">
           <span className="text-gray-400 text-md">
             Filters
@@ -50,7 +50,7 @@ const SidebarFilters = ({ filters, setFilters, filterCount }) => {
         </div>
         <div>
           <h2 className="font-bold text-gray-600">Subscription Type</h2>
-          <div className="rounded-md border border-gray-400 text-gray-600 text-sm mt-2 flex">
+          <div className="rounded-md border border-gray-400 text-gray-600 text-sm mt-2 flex w-fit">
             {subscriptionType.map((sub) => (
               <button
                 key={sub}

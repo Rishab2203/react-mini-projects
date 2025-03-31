@@ -5,25 +5,25 @@ import { LuCircleArrowOutDownRight } from "react-icons/lu";
 
 const Card = ({ item }) => {
   return (
-    <div className="flex py-8 px-9 items-center gap-4 border-b border-gray-400 min-w-fit cursor-pointer hover:border hover:border-gray-400 hover:rounded-md   ">
+    <div className="flex py-8 px-9 items-center gap-4 border-b border-gray-400 min-w-fit w-[60vw] cursor-pointer hover:border hover:border-gray-400 hover:rounded-md   ">
       <img
         src={`https://assets.smallcase.com/images/smallcases/200/${item.scid}.png`}
         width="70px"
         alt=""
       />
       <div className="flex items-center justify-between">
-        <div className="flex flex-col">
+        <div className="flex flex-col max-w-[300px] ">
           <div className="flex items-center">
-            <h1 className="font-bold mr-1.5 w-[300px] overflow-ellipsis overflow-hidden text-nowrap">
+            <h1 className="font-bold mr-1.5  overflow-ellipsis overflow-hidden text-nowrap">
               {item["info"]["name"]}
             </h1>
             {item["flags"]["private"] && (
-              <span className="text-[9px] font-bold h-fit bg-[#f2f6ff] text-[#1f79e0]">
+              <span className="text-[9px] font-bold h-fit text-nowrap bg-[#f2f6ff] text-[#1f79e0]">
                 Free Access
               </span>
             )}
           </div>
-          <span className="text-wrap text-gray-700 text-[15px] max-w-[400px]">
+          <span className="text-wrap text-gray-700 text-[14px] ">
             {item["info"]["shortDescription"]}
           </span>
           <span className="text-gray-500">
