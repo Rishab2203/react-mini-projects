@@ -104,20 +104,25 @@ function App() {
     }
     if (selected.tenure) {
       const timeDuration = selected.tenure.value;
-      return selected.tenure.order === "High-Low"
+      console.log(
+        a["stats"]["returns"][timeDuration] -
+          b["stats"]["returns"][timeDuration]
+      );
+      return selected.tenure.order !== "High-Low"
         ? a["stats"]["returns"][timeDuration] -
             b["stats"]["returns"][timeDuration]
         : b["stats"]["returns"][timeDuration] -
             a["stats"]["returns"][timeDuration];
     }
+    return 0;
   });
 
   return (
     <>
       <Navbar />
-      <div className="flex flex-col w-[60vw] m-auto p-1 justify-between mt-7">
+      <div className="flex flex-col  max-w-[75vw] m-auto p-1 justify-between mt-7">
         <Sectionbar selected={selected} setSelected={setSelected} />
-        <main className="flex mt-5  justify-between px-1.5">
+        <main className="flex mt-5 justify-between  gap-1.5 px-1.5">
           <SidebarFilters
             filters={filters}
             setFilters={setFilters}

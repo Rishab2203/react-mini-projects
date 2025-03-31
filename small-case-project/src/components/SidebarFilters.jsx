@@ -31,7 +31,7 @@ const SidebarFilters = ({ filters, setFilters, filterCount }) => {
   };
   return (
     <>
-      <section className="w-[10vw] flex flex-col gap-4">
+      <section className="w-[13vw] flex flex-col gap-4">
         <div className="flex justify-between border-b pb-3 border-gray-200">
           <span className="text-gray-400 text-md">
             Filters
@@ -42,7 +42,7 @@ const SidebarFilters = ({ filters, setFilters, filterCount }) => {
           <button
             onClick={handleClearAll}
             className={` cursor-pointer  ${
-              filterCount > 1 ? "text-blue-600" : "text-gray-400"
+              filterCount > 0 ? "text-blue-600" : "text-gray-400"
             } `}
           >
             clear all
@@ -50,11 +50,15 @@ const SidebarFilters = ({ filters, setFilters, filterCount }) => {
         </div>
         <div>
           <h2 className="font-bold text-gray-600">Subscription Type</h2>
-          <div className="rounded-md border-1 text-gray-600 text-sm border-gray-400 mt-2">
+          <div className="rounded-md border border-gray-400 text-gray-600 text-sm mt-2 flex">
             {subscriptionType.map((sub) => (
               <button
                 key={sub}
-                className={`text-wrap align-middle p-0.5 w-1/3 cursor-pointer `}
+                className={`whitespace-normal break-words p-2 w-1/3  font-semibold cursor-pointer text-center hover:bg-gray-100 rounded-md ${
+                  filters["subscriptionType"] === sub
+                    ? "text-blue-600 bg-blue-100"
+                    : ""
+                } `}
                 onClick={() => handleFilterClick({ subscriptionType: sub })}
               >
                 {sub}
@@ -68,13 +72,13 @@ const SidebarFilters = ({ filters, setFilters, filterCount }) => {
             {investmentAmount.map((invest) => (
               <label
                 key={invest.name}
-                className="flex items-center gap-1.5 text-sm cursor-pointer px-2 py-2 hover:bg-gray-100 rounded"
+                className="flex items-center gap-1.5 text-sm cursor-pointer px-2 py-2 hover:bg-gray-100"
               >
                 <input
                   type="radio"
                   name="investmentAmount"
                   value={invest.value}
-                  //  checked={selected === option}
+                  checked={filters["investmentValue"] === invest.value}
                   onChange={() =>
                     handleFilterClick({ investmentValue: invest.value })
                   }

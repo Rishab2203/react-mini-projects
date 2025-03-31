@@ -7,7 +7,7 @@ const CustomSelect = ({ selected, setSelected }) => {
   const options = ["Popularity", "Minimum Amount", "Recently Rebalanced"];
   const timePeriods = [
     { duration: "1M", value: "monthly" },
-    { duration: "6M", value: "halfYearly" },
+    { duration: "6M", value: "halfyearly" },
     { duration: "1Y", value: "yearly" },
     { duration: "3Y", value: "threeYear" },
     { duration: "5Y", value: "fiveYear" },

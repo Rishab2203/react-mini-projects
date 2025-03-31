@@ -40,9 +40,10 @@ const InvestementStrategyFilter = ({ filters, setFilters }) => {
           <label className="text-sm text-nowrap text-gray-700 ">
             <input
               type="checkbox"
-              checked={filters["investmentStrategies"]?.includes(
-                item.toLowerCase()
-              )}
+              checked={
+                Array.isArray(filters["investmentStrategies"]) &&
+                filters["investmentStrategies"].includes(item.toLowerCase())
+              }
               onChange={() => handleChange(item.toLowerCase())}
               className="mr-1"
             />
